@@ -2,6 +2,11 @@ library(gt)
 library(tibble)
 library(markdown)
 
+# systemfonts::system_fonts() %>% View
+
+# f <- chromote::default_chromote_object()
+# f$close()
+
 make_table <- function(df, symbol, title, fn) {
   multi_tab <- gt(df, rowname_col = "x") |>
     tab_header(title) |>
@@ -32,6 +37,12 @@ make_table <- function(df, symbol, title, fn) {
       column_labels.border.bottom.width  = px(3)
     ) |>
     opt_table_font(font = "EBGaramond08-Regular")
+
+  purrr::walk(1:10, function(i) {
+    multi_tab <<- multi_tab |>
+      tab_style(style = list(cell_text(color = "blue", font = "EBGaramond08-Italic")),
+                locations = cells_body(rows = i, columns = i + 1))
+  })
 
   multi_tab |> gtsave(fn)
 }
