@@ -1,0 +1,48 @@
+---
+title: Spectrograms for distributions
+---
+
+```{r}
+set.seed(1)
+x <- rnorm(2048)
+spectrum(x, log = "no", span = 68)
+```
+
+```{r}
+library(actuar)
+x <- rpareto1(2048, 1.8, 1000)
+spectrum(x, log = "no", span = 68)
+```
+
+```{r}
+x <- rexp(20480, 1)
+spectrum(x, log = "no", span = 680)
+```
+
+
+```{r}
+x <- rlnorm(20480)
+spectrum(x, log = "no", span = 680)
+```
+
+```{r}
+x <- rpois(20480, 1)
+spectrum(x, log = "no", span = 680)
+```
+
+```{r}
+x <- matrix(rexp(100*100), ncol = 100)
+image(x, col = gray.colors(10))
+```
+
+
+
+```{r}
+x <- matrix(rpareto1(100*100, 10, 1), ncol = 100)
+image(x, col = gray.colors(10))
+```
+
+```{r}
+x <- matrix(lnorm(100*100), ncol = 100)
+image(x, col = gray.colors(10))
+```
