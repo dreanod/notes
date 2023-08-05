@@ -1,0 +1,14 @@
+```{r}
+df <- tibble(
+  x = seq(0, 1, length.out = 1000),
+  lnorm = qlnorm(x, meanlog = -1/2, sdlog = 1),
+  exp = qexp(x),
+  pareto = qpareto(x, 2, 1)
+)
+df <- df[1:(nrow(df) - 1),]
+
+ggplot(df, aes(exp, lnorm)) +
+  geom_line() +
+  geom_abline(slope = 1, intercept = 0)
+```
+

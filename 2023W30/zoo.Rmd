@@ -1,0 +1,45 @@
+---
+title: zoo
+---
+
+
+```{r}
+library(zoo)
+ap <- as.zoo(AirPassengers)
+ap
+```
+
+```{r}
+time(ap)
+time(ap)[1] |> as.Date()
+time(ap)[1] |> class()
+```
+
+```{r}
+start(ap)
+```
+
+```{r}
+end(ap)
+```
+
+```{r}
+coredata(ap)
+```
+```{r}
+window(ap, start = 1958, end = 1958 + 11/12)
+```
+
+```{r}
+ap[I(seq(1958, 1959, by = 1/12))]
+```
+
+```{r}
+rollapply(ap, 10, sum)
+rollapply(ap, 10, sum, partial = TRUE)
+```
+```{r}
+aggregate(ap, as.yearqtr, sum, 1)
+```
+
+
